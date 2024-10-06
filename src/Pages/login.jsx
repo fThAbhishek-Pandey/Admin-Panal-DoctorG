@@ -9,7 +9,6 @@ const Login = () => {
   const [email, setEmail] = useState('');
   const [password,setPassword] = useState('');
   const {setAdminToken,backendURL} = useContext(AdminContext)
-  // const onSubmitHandle = OnSubmitHandler(state,email,password);
   const onSubmitHandle = async(event)=> {
      event.preventDefault();
      console.log("i am called backendURL : ",backendURL)

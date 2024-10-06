@@ -9,7 +9,6 @@ import Doctors from "./Admin/Doctors";
 const Home = () => {
   return (
     <div>
-      AdminHome
       <Navbar />
       <div className="flex items-start">
         <Sidebar />

@@ -2,6 +2,8 @@ import React, { useContext, useState } from "react";
 import { assets } from "../assets/assets";
 import { AdminContext } from "../context/AdminCondext";
 import axios from 'axios';
+import { toast } from "react-toastify";
+
 const Login = () => {
   const [state, setState] = useState("Admin");
   const [email, setEmail] = useState('');
@@ -19,10 +21,10 @@ const Login = () => {
              if (data.success){
                   localStorage.setItem("AdminToken", data.token)
                   setAdminToken("success",data.token)
-                
+                  toast.error(data.massage);
                }
                else {
-                console.log("not sucess");
+                
                }
             }
             

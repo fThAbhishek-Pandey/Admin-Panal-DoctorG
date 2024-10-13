@@ -1,6 +1,8 @@
 import { createContext, useState } from "react";
 import { toast } from "react-toastify";
 import axios from "axios";
+import GetAllAppointmnent from "../component/AdminContext/GetAllAppointmnent";
+import cancelAPI from "../component/AdminContext/cancelAPI";
 export const AdminContext = createContext();
 const AdminContextProvider = (props) => {
   const [adminToken, setAdminToken] = useState(
@@ -8,6 +10,7 @@ const AdminContextProvider = (props) => {
   );
   const backendURL = import.meta.env.VITE_BACKEND_URL;
   const [doctors, setDoctors] = useState([]);
+  const [appointments, setAppointments]= useState(false);
   const getAllDoctors = async () => {
     try {
       console.log("i am in GetAllDoctors Functions : ");
@@ -42,15 +45,39 @@ const AdminContextProvider = (props) => {
       toast.error(message)
     }
   };
-  const value = {
-    adminToken,
-    setAdminToken,
-    backendURL,
-    doctors,
-    getAllDoctors,
-    changeAvaibility,
-  };
   
+  
+// const get all appointsments
+const getAllAppointmentsHandler = async()=>{
+      const data= await GetAllAppointmnent(backendURL, adminToken);
+     
+      if(data.success){
+        toast.success("successfully get appointsment");
+        setAppointments(data.appointments);
+     }
+     else {
+         toast.error(data.message)
+         return false;
+     }
+
+}
+const cancelByAdminHandler = async(appointmentId)=>{
+       await cancelAPI(backendURL, adminToken, appointmentId, getAllAppointmentsHandler)
+}
+
+const value = {
+  adminToken,
+  setAdminToken,
+  backendURL,
+  doctors,
+  getAllDoctors,
+  changeAvaibility,
+  getAllAppointmentsHandler,
+  appointments,
+  cancelByAdminHandler
+};
+
+
   return (
     <AdminContext.Provider value={value}>
       {props.children}

@@ -13,8 +13,7 @@ const Home = () => {
       <div className="flex items-start">
         <Sidebar />
         <Routes>
-            <Route path ='/' element={<></>}></Route>
-            <Route path ='/admin-dashboard' element={<Dashboard/>}></Route>
+            <Route path ='/' element={<Dashboard/>}></Route>
             <Route path ='/all-appointments' element={<Apointsment/>}></Route>
             <Route path ='/add-doctor' element={<AddDoctor/>}></Route>
             <Route path ='/doctors-list' element={<Doctors/>}></Route>           

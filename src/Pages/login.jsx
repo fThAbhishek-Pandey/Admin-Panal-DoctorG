@@ -1,14 +1,17 @@
 import React, { useContext, useState } from "react";
 import { assets } from "../assets/assets";
 import { AdminContext } from "../context/AdminCondext";
+import { DoctorContext } from "../context/DoctorContext";
 import axios from 'axios';
 import { toast } from "react-toastify";
-
+import {useNavigate} from 'react-router-dom'
 const Login = () => {
+  const navigate = useNavigate()
   const [state, setState] = useState("Admin");
   const [email, setEmail] = useState('');
   const [password,setPassword] = useState('');
   const {setAdminToken,backendURL} = useContext(AdminContext)
+  const {  setDoctorToken  }= useContext(DoctorContext)
   const onSubmitHandle = async(event)=> {
      event.preventDefault();
      console.log("i am called backendURL : ",backendURL)
@@ -20,14 +23,27 @@ const Login = () => {
              if (data.success){
                   localStorage.setItem("AdminToken", data.token)
                   setAdminToken("success",data.token)
-                  toast.error(data.massage);
+                  toast.success("You are login");
+                  navigate('/')
                }
                else {
-                
+                toast.error(data.massage);
                }
             }
             
-         else {}
+         else {
+          const {data} = await axios.post(backendURL+'/api/doctors/login',{email,password})
+          console.log("data : ",data)   
+          if (data.success){
+               localStorage.setItem("doctor_token", data.doctor_token)
+               setDoctorToken("success",data.doctor_token)
+               toast.success("You are login as Doctor");
+               navigate('/')
+            }
+            else {
+             toast.error(data.massage);
+            }
+         }
          console.log("I am not sucess");
      } catch (error) {
             console.log("error : ",error)

@@ -35,9 +35,9 @@ const AddDoctor = () => {
            formData.append('about', about)
            formData.append('speciality', speciality)
            formData.append('degree', degree)
-           formData.append('address',address1);
+           formData.append('address',{});
            formData.append('available',true)
-          //  sonsole log formdata
+          //  console log formdata
           formData.forEach((value,key)=>{
             console.log (key ," : ", value,"\n");
           })
@@ -63,7 +63,8 @@ const AddDoctor = () => {
             toast.success(data.message);
           }
         } catch (error) {
-          
+          console.log(error);
+          toast.error(error.message)
         }
   }
   return (
@@ -218,7 +219,7 @@ const AddDoctor = () => {
             required
           />
         </div>
-        <button type="submit" className="bg-primary px-10 py-3 mt-4 text-white rounded-full">
+        <button  className="bg-primary px-10 py-3 mt-4 text-white rounded-full">
           Add Doctor
         </button>
       </div>

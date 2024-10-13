@@ -1,9 +1,12 @@
-import { createContext } from "react";
+import { createContext, useState } from "react";
 
 export const DoctorContext = createContext()
 const DoctorContextProvider = (props)=>{
-    const value = {
+     const [doctor_token, setDoctorToken] = useState(localStorage.getItem('doctor_token'|| false))
 
+
+    const value = {
+        doctor_token, setDoctorToken
     }
     return (
         <DoctorContext.Provider value={value}>

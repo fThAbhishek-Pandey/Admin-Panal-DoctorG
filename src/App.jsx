@@ -4,6 +4,7 @@ import { ToastContainer } from "react-toastify";
 import {AdminContext} from "./context/AdminCondext";
 import { DoctorContext } from "./context/DoctorContext";
 import Home from "./Pages/Home";
+import DocHome from "./Pages/Doctor/DocHome";
 const App = () => {
   // console.log("AdminContext : ", AdminContext);
   const  {adminToken}  = useContext(AdminContext)
@@ -20,7 +21,8 @@ const App = () => {
     <div>
     {doctor_token &&(
       <div>
-              i am doctor
+             <DocHome />
+             <ToastContainer />
       </div>
     )}
     {adminToken && (

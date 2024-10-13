@@ -3,6 +3,7 @@ import { toast } from "react-toastify";
 import axios from "axios";
 import GetAllAppointmnent from "../component/AdminContext/GetAllAppointmnent";
 import cancelAPI from "../component/AdminContext/cancelAPI";
+import findDashData from "../component/AdminContext/findDashData";
 export const AdminContext = createContext();
 const AdminContextProvider = (props) => {
   const [adminToken, setAdminToken] = useState(
@@ -11,6 +12,7 @@ const AdminContextProvider = (props) => {
   const backendURL = import.meta.env.VITE_BACKEND_URL;
   const [doctors, setDoctors] = useState([]);
   const [appointments, setAppointments]= useState(false);
+  const [dashData, setDashData] = useState(false);
   const getAllDoctors = async () => {
     try {
       console.log("i am in GetAllDoctors Functions : ");
@@ -64,7 +66,10 @@ const getAllAppointmentsHandler = async()=>{
 const cancelByAdminHandler = async(appointmentId)=>{
        await cancelAPI(backendURL, adminToken, appointmentId, getAllAppointmentsHandler)
 }
-
+const handleDashData = async ()=>{
+  console.log("handleDashData i am ")
+       await findDashData(backendURL, adminToken, setDashData);
+}
 const value = {
   adminToken,
   setAdminToken,
@@ -74,7 +79,9 @@ const value = {
   changeAvaibility,
   getAllAppointmentsHandler,
   appointments,
-  cancelByAdminHandler
+  cancelByAdminHandler,
+  dashData,
+  handleDashData
 };
 
 

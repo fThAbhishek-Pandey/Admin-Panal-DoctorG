@@ -9,7 +9,7 @@ const Navbar = () => {
             console.log("i am called logout")
             navigate('/')
             doctor_token && setDoctorToken ('')
-            doctor_token && localStorage.removeItem('AdminToken');
+            doctor_token && localStorage.removeItem('doctor_token');
    }
   return (
     <div className="flex justify-between items-center px-4 sm:px-10 py-3 border-b bg-white ">

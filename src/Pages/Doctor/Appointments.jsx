@@ -24,7 +24,7 @@ const Appointments = () => {
     }
   }, [doctor_token]);
   return (
-    <div className="w-full max-w-full m-5">
+    <div className="w-full  max-w-full m-5">
       <p className="mb-3 text-lg font-medium">All Appointments</p>
       <div className="bg-white rounded text-sm min-h-[60vh] max-h-[80vh] overflow-y-scroll">
         <div className="hidden sm:grid grid-cols-[0.5fr_3fr_1fr_3fr_3fr_1fr_1fr] grid-flow-col py-3 px-6 border-b">

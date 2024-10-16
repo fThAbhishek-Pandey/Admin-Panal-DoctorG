@@ -14,10 +14,10 @@ const Login = () => {
   const {  setDoctorToken  }= useContext(DoctorContext)
   const onSubmitHandle = async(event)=> {
      event.preventDefault();
-     console.log("i am called backendURL : ",backendURL)
+    //  console.log("i am called backendURL : ",backendURL)
      try {
          if(state === "Admin"){
-          console.log(": Admin")
+          // console.log(": Admin")
              const {data} = await axios.post(backendURL+'/api/admin/login',{email,password})
              console.log("data : ",data)   
              if (data.success){
@@ -37,16 +37,18 @@ const Login = () => {
           if (data.success){
                localStorage.setItem("doctor_token", data.doctor_token)
                setDoctorToken("success",data.doctor_token)
-               toast.success("You are login as Doctor");
+              //  toast.success("You are login as Doctor");
+              toast.success("You are login as Doctor")
                navigate('/')
             }
             else {
              toast.error(data.massage);
             }
          }
-         console.log("I am not sucess");
+        //  console.log("I am not sucess");
      } catch (error) {
             console.log("error : ",error)
+            toast.error(data.massage);
      }
     }
   return (

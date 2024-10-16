@@ -17,10 +17,6 @@ const getAppointment = async(BackendURL,setAppointments,doctor_token) => {
             console.log(error)
             toast.error(error.message);
         }
-
-
-
-  return 
 }
 
 export default getAppointment

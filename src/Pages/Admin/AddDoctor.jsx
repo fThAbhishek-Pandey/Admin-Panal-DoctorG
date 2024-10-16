@@ -3,6 +3,7 @@ import { assets } from "../../assets/assets";
 import {AdminContext} from "../../context/AdminCondext"
 import {toast} from 'react-toastify'
 import axios from "axios";
+import { json } from "react-router-dom";
 const AddDoctor = () => {
   const [docImg, setDocImg] = useState(false);
   const [name, setName] = useState("");
@@ -13,8 +14,8 @@ const AddDoctor = () => {
   const [fees, setFees] = useState("");
   const [about, setAbout] = useState("");
   const [speciality, setSpeciality] = useState("--select--");
-  const [address1, setAddress1] = useState("");
-  const [address2, setAddress2] = useState("");
+  const [street, setStreet] = useState("Shastri Nagar");
+  const [city, setCity] = useState("Lalgang");
   const {backendURL,adminToken} = useContext(AdminContext);
   const onSubmitHandler = async (event)=>{
         event.preventDefault();
@@ -35,7 +36,7 @@ const AddDoctor = () => {
            formData.append('about', about)
            formData.append('speciality', speciality)
            formData.append('degree', degree)
-           formData.append('address',{});
+           formData.append('address',JSON.stringify({street,city}));
            formData.append('available',true)
           //  console log formdata
           formData.forEach((value,key)=>{
@@ -56,8 +57,8 @@ const AddDoctor = () => {
                  setFees("");
                  setAbout("");
                  setSpeciality("--select--")
-                 setAddress1("")
-                 setAddress2("");
+                 setStreet("Shastri Nagar")
+                 setCity("Lalgang");
           }
           else {
             toast.success(data.message);
@@ -161,7 +162,7 @@ const AddDoctor = () => {
               <p>Speciality</p>
               <select
                 value={speciality}
-                onClick={(e) => setSpeciality(e.target.value)}
+                onChange={(e) => setSpeciality(e.target.value)}
                
                 className="border rounded px-3 py-2"
                 name=""
@@ -189,16 +190,16 @@ const AddDoctor = () => {
               <div className="flex-1 flex flex-col gap-1">
                 <p>Address</p>
                 <input
-                  onChange={(e)=>(setAddress1(e.target.value))}
-                  value={address1}
+                  onChange={(e)=>(setStreet(e.target.value))}
+                  value={street}
                   className="border rounded px-3 py-2"
                   type="text"
                   placeholder="street"
                   required
                 />
                 <input
-                  onChange={(e)=>(setAddress2(e.target.value))}
-                  value={address2}
+                  onChange={(e)=>(setCity(e.target.value))}
+                  value={city}
                   className="border rounded px-3 py-2"
                   type="text"
                   placeholder="city"

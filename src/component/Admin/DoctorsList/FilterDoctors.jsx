@@ -4,7 +4,6 @@ import { AdminContext } from "../../../context/AdminCondext";
 const FilteredDocter = ({ doctors }) => {
   console.log("FilteredDocter :", doctors);
   const { changeAvaibility } = useContext(AdminContext);
-  const Navigate = useNavigate();
   return (
     doctors && (
       <div className="w-full grid  grid-cols-[repeat(auto-fill,minmax(200px,1fr))]  gap-2 pt-3 gap-y-4 px-1 sm:px-0">
@@ -15,10 +14,6 @@ const FilteredDocter = ({ doctors }) => {
               key={"fth02" + idx}
             >
               <img
-                onClick={() => {
-                  Navigate(`/appointment/${item._id}`);
-                  scrollTo(0, 0);
-                }}
                 className="bg-blue-50 w-full hover:bg-primary transition-all duration-500"
                 src={item.image}
                 alt={item.name}

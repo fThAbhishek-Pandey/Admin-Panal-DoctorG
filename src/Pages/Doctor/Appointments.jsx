@@ -7,15 +7,15 @@ import cancelAppointments from "../../component/Doctor/Appointment/CancelAppoint
 const Appointments = () => {
   const { appointments, handleAppointment, doctor_token, BackendURL } =
     useContext(DoctorContext);
-  console.log("appointments", appointments);
+  // console.log("appointments", appointments);
   const { calculateAge, slotDataFormate, currencySymboll } =
     useContext(AppContext);
-  console.log(" i am in Appointments ", appointments);
+  // console.log(" i am in Appointments ", appointments);
   const onCompleteHandler = async (appointmentId) => {
     await completeAppointments(BackendURL, doctor_token, appointmentId);
   };
   const onCancelHandler = async (appointmentId) => {
-    console.log("onCancelHandler : ", appointmentId);
+    // console.log("onCancelHandler : ", appointmentId);
     await cancelAppointments(BackendURL, doctor_token, appointmentId);
   };
   useEffect(() => {

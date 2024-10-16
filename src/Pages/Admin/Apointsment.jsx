@@ -11,7 +11,7 @@ const Apointsment = () => {
     getAllAppointmentsHandler,
     cancelByAdminHandler,
   } = useContext(AdminContext);
-  console.log("appointments :", appointments);
+  // console.log("appointments :", appointments);
   useEffect(() => {
     if (adminToken) {
       getAllAppointmentsHandler();

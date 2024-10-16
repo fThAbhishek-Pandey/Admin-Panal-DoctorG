@@ -7,10 +7,10 @@ const Dashboard = () => {
     useContext(AdminContext);
   const { calculateAge, slotDataFormate, currencySymboll } =
     useContext(AppContext);
-  console.log("dash data : ", dashData);
+  // console.log("dash data : ", dashData);
   // useEffect (handleDashData() ,[])
   useEffect(() => {
-    console.log(" i am useEffect Dashboard");
+    // console.log(" i am useEffect Dashboard");
     handleDashData();
   }, []);
   const onCancel = async (appointmentId) => {

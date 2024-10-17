@@ -8,8 +8,8 @@ import {useNavigate} from 'react-router-dom'
 const Login = () => {
   const navigate = useNavigate()
   const [state, setState] = useState("Admin");
-  const [email, setEmail] = useState('');
-  const [password,setPassword] = useState('');
+  const [email, setEmail] = useState('fth@doctorg.com');
+  const [password,setPassword] = useState('fth830564');
   const {setAdminToken,backendURL} = useContext(AdminContext)
   const {  setDoctorToken  }= useContext(DoctorContext)
   const onSubmitHandle = async(event)=> {
